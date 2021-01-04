@@ -12,7 +12,7 @@
             if ($conn->connect_error) {
                 $result = "Connection failed: " . $conn->connect_error;
             } else {
-                $result = $conn->query($sql);
+                $result = $conn->query($sql) ? $conn->query($sql) : $conn->error;
             }
 
             $conn->close();
