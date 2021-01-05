@@ -7,7 +7,7 @@
             $query = new SqlQuery();
 
             $sql = "CREATE TABLE Teacher (
-                Id INT PRIMARY KEY,
+                Id INT PRIMARY KEY AUTO_INCREMENT,
                 Name VARCHAR(20),
                 Password VARCHAR(10)
             )";

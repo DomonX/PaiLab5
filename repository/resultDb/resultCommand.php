@@ -1,5 +1,5 @@
 <?php
-    include "../sqlQuery.php";
+    include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/sqlQuery.php');
 
     class ResultCommand {
 
@@ -7,16 +7,52 @@
             $query = new SqlQuery();
 
             $sql = "CREATE TABLE Result (
-                Id INT PRIMARY KEY,
+                Id INT PRIMARY KEY AUTO_INCREMENT,
                 GroupNumber VARCHAR(6),
                 AlbumNumber INT,
                 Grade INT,
                 Comment VARCHAR(250),
                 Password VARCHAR(10),
-                Status INT
+                Status INT,
+                Test INT
             )";
 
             return $query->command($sql);
+        }
+
+        private function removeAllResults() {
+            $query = new SqlQuery();
+            $sql = "DELETE FROM Result";
+
+            return $query->command($sql);
+        }
+
+        private function addNewResults($newResults, $testId) {
+            $queryResults = array();
+
+            foreach($newResults as $result) {
+                $query = new SqlQuery();
+                $sql = "INSERT INTO Result
+                        VALUES (DEFAULT, '$result->groupNumber', '$result->albumNumber', '$result->grade', '$result->comments', 
+                                '$result->password', '$result->status', '$testId')";
+    
+                array_push($queryResults, $query->command($sql));
+            }
+            
+            return $queryResults;
+        }
+
+        public function updateAllResults($newResults, $testId) {
+            $removeResults = $this->removeAllResults();
+
+            if($removeResults === "Ok") {
+                $addResults = $this->addNewResults($newResults, $testId);
+                $invalidRows = array_filter($addResults, function ($i) { return $i !== "Ok"; });
+
+                return count($invalidRows) > 0 ? "One or more results are invalid" : "Ok";
+            }
+
+            return $removeResults;
         }
     }
 ?>

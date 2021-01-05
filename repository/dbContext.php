@@ -2,7 +2,7 @@
     class DbContext {
 
         private function getConnectionDetails() {
-            $file = file_get_contents("../dbSettings.json");
+            $file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/dbSettings.json');
             $json = json_decode($file, true);
 
             $servername = $json["servername"];
@@ -13,7 +13,7 @@
         }
 
         public function connectToDb($dbName) {
-            $file = file_get_contents("../dbSettings.json");
+            $file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/dbSettings.json');
             $json = json_decode($file, true);
 
             $servername = $json["servername"];

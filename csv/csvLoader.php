@@ -1,7 +1,8 @@
 <?php
 
   include '../models/test.php';
-  include '../models/result.php';  
+  include '../models/result.php';
+  include '../repository/testDb/TestCommand.php';
 
   class CsvLoader {
     public function getData() {
@@ -17,7 +18,7 @@
           $i->results = $this->getResultsForExam($i);
           return $i;
         }, $exams);
-        var_dump($examsWithResults);
+        return $examsWithResults;
     } 
 
     private function getResultsForExam($exam) {
@@ -42,8 +43,8 @@
   }
 
   $loader = new CsvLoader();
-  $loader->getData();
-
+  $resultCommand = new TestCommand();
+  $resultCommand->updateAllTests($loader->getData());
 ?>
 
 

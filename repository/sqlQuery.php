@@ -1,6 +1,5 @@
 <?php
-
-    include "dbContext.php";
+    include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/dbContext.php');
 
     class SqlQuery {
 
