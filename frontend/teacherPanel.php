@@ -23,7 +23,9 @@
             echo '<p class="subject-element">Subject 3</p>';
         ?>
 
-        <button type="submit" class="btn generate-btn">Generate PDF</button>
+        <form action="/PaiLab5/pdfSaver/pdfSaver.php" method="GET">
+            <button type="submit" name="generatePdf" class="btn generate-btn">Generate PDF</button>
+        </form>
 
     </div>
 

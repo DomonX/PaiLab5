@@ -17,10 +17,10 @@
     </div>
 
     <form action="" class="form-container">
-        <button type="submit" class="btn accept-btn">Accept grade</button>
+        <button type="submit" name="submit-grade" class="btn accept-btn">Accept grade</button>
         <div class="question-container">
-            <textarea name="question" id="question" cols="40" rows="10" placeholder="Ask question about the grade..."></textarea>
-            <button type="submit" class="btn question-submit-btn">Submit question</button>
+            <textarea name="question" id="question" cols="40" rows="10" maxlength="250" placeholder="Ask question about the grade..."></textarea>
+            <button type="submit" name="submit-question" class="btn question-submit-btn">Submit question</button>
         </div>
     </form>
 </body>
