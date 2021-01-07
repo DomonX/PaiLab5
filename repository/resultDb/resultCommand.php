@@ -1,5 +1,6 @@
 <?php
     include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/sqlQuery.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/status.php');
 
     class ResultCommand {
 
@@ -53,6 +54,22 @@
             }
 
             return $removeResults;
+        }
+
+        public function changeStatus($resultId, $newStatus) {
+            $query = new SqlQuery();
+            $sql = "UPDATE Result SET Status = '$newStatus' WHERE Id = '$resultId'";
+
+            return $query->command($sql);
+        }
+
+        public function sendComment($resultId, $comment) {
+            $query = new SqlQuery();
+            $sql = "UPDATE Result SET Comment = '$comment' WHERE Id = '$resultId'";
+            $commentResult = $query->command($sql);
+            $status = new Status();
+
+            return $commentResult === "Ok" ? $this->changeStatus($resultId, $status::WITHCOMMENT) : $commentResult;
         }
     }
 ?>

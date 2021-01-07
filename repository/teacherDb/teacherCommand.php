@@ -14,5 +14,14 @@
 
             return $query->command($sql);
         }
+
+        public function teacherSeed() {
+            $query = new SqlQuery();
+
+            $sql = "INSERT INTO Teacher VALUES 
+                (DEFAULT, 'Arkadiusz Chrobot', 'abcd'), (DEFAULT, 'Karol Wieczorek', 'abcd')";
+
+            return $query->command($sql);
+        }
     }
 ?>
