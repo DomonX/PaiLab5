@@ -1,8 +1,7 @@
 <?php
 
-  include '../models/test.php';
-  include '../models/result.php';
-  include '../repository/testDb/TestCommand.php';
+  include_once '../models/test.php';
+  include_once '../models/result.php';
 
   class CsvLoader {
     public function getData() {
@@ -36,15 +35,12 @@
       $result->groupNumber = $array[0];
       $result->albumNumber = $array[1];
       $result->grade = $array[2];
-      $result->comments = $array[3];
-      $result->password = $array[4];
+      $result->comment = $array[3];
+      $result->teacherComment = $array[4];
+      $result->password = $array[5];
       return $result;
     }
   }
-
-  $loader = new CsvLoader();
-  $resultCommand = new TestCommand();
-  $resultCommand->updateAllTests($loader->getData());
 ?>
 
 

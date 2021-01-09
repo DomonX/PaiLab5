@@ -1,5 +1,5 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/resultDb/resultCommand.php');
+    include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/resultDb/resultCommand.php');
 
     class TestCommand {
 
@@ -28,11 +28,11 @@
                         VALUES (DEFAULT, '$i->name')";
     
                 $query->command($sql);
-                $id = $query->query("SELECT LAST_INSERT_ID()");
+                $id = $query->query("SELECT MAX(Id) FROM Test");
                 $row = $id->fetch_assoc();
                 $resultCommand = new ResultCommand();
 
-                return $resultCommand->updateAllResults($i->results, $row["LAST_INSERT_ID()"]);
+                return $resultCommand->updateAllResults($i->results, $row["MAX(Id)"]);
             }, $newTests);
             
             return $queryResults;

@@ -5,7 +5,8 @@ class Result {
   public $groupNumber;
   public $albumNumber;
   public $grade;
-  public $comments;
+  public $comment;
+  public $teacher;
   public $password;
   public $status;
 }

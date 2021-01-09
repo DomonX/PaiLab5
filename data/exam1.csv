@@ -1,7 +1,7 @@
-3ID11A;88100;2;;abcdefgh
-3ID11A;88101;3;;abcdefgh
-3ID11A;88102;5;;abcdefghs
-3ID11A;88103;4,5;;abcdefgh
-3ID11A;88104;2,5;;abcdefgh
-3ID11A;88105;3,5;;abcdefgh
-3ID11A;88106;5;;abcdefgh
+3ID11A;88100;2;;;abcdefgh
+3ID11A;88101;3;;;abcdefgh
+3ID11A;88102;5;;;abcdefghs
+3ID11A;88103;4,5;;;abcdefgh
+3ID11A;88104;2,5;;;abcdefgh
+3ID11A;88105;3,5;;;abcdefgh
+3ID11A;88106;5;;;abcdefgh

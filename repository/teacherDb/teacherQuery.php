@@ -1,6 +1,6 @@
 <?php
-    include "../sqlQuery.php";
-
+    include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/sqlQuery.php');
+    
     class TeacherQuery {
 
         public function checkTeacherPassword($teacherName, $password) {

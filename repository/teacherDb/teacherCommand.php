@@ -1,5 +1,5 @@
 <?php
-    include "../sqlQuery.php";
+    include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/sqlQuery.php');
 
     class TeacherCommand {
 
@@ -18,8 +18,7 @@
         public function teacherSeed() {
             $query = new SqlQuery();
 
-            $sql = "INSERT INTO Teacher VALUES 
-                (DEFAULT, 'Arkadiusz Chrobot', 'abcd'), (DEFAULT, 'Karol Wieczorek', 'abcd')";
+            $sql = "INSERT INTO Teacher VALUES (DEFAULT, 'Jaroslaw Wikarek', 'abcd')";
 
             return $query->command($sql);
         }

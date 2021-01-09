@@ -1,6 +1,6 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/sqlQuery.php');
-    include($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/status.php');
+    include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/sqlQuery.php');
+    include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/status.php');
 
     class ResultCommand {
 
@@ -13,6 +13,7 @@
                 AlbumNumber INT,
                 Grade INT,
                 Comment VARCHAR(250),
+                TeacherComment VARCHAR(250),
                 Password VARCHAR(10),
                 Status INT,
                 Test INT
@@ -34,8 +35,8 @@
             foreach($newResults as $result) {
                 $query = new SqlQuery();
                 $sql = "INSERT INTO Result
-                        VALUES (DEFAULT, '$result->groupNumber', '$result->albumNumber', '$result->grade', '$result->comments', 
-                                '$result->password', '$result->status', '$testId')";
+                        VALUES (DEFAULT, '$result->groupNumber', '$result->albumNumber', '$result->grade', '$result->comment', 
+                                '$result->teacherComment', '$result->password', '$result->status', '$testId')";
     
                 array_push($queryResults, $query->command($sql));
             }
