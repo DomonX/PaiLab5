@@ -35,16 +35,17 @@
             foreach($newResults as $result) {
                 $query = new SqlQuery();
                 $sql = "INSERT INTO Result
-                        VALUES (DEFAULT, '$result->groupNumber', '$result->albumNumber', '$result->grade', '$result->comment', 
+                        VALUES (DEFAULT, '$result->groupNumber', '$result->albumNumber', '$result->grade', '$result->comment',
                                 '$result->teacherComment', '$result->password', '$result->status', '$testId')";
-    
+
                 array_push($queryResults, $query->command($sql));
             }
-            
+
             return $queryResults;
         }
 
         public function updateAllResults($newResults, $testId) {
+            var_dump();
             $removeResults = $this->removeAllResults();
 
             if($removeResults === "Ok") {
@@ -73,4 +74,5 @@
             return $commentResult === "Ok" ? $this->changeStatus($resultId, $status::WITHCOMMENT) : $commentResult;
         }
     }
+
 ?>

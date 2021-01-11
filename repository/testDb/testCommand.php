@@ -26,7 +26,7 @@
                 $query = new SqlQuery();
                 $sql = "INSERT INTO Test
                         VALUES (DEFAULT, '$i->name')";
-    
+
                 $query->command($sql);
                 $id = $query->query("SELECT MAX(Id) FROM Test");
                 $row = $id->fetch_assoc();
@@ -34,7 +34,7 @@
 
                 return $resultCommand->updateAllResults($i->results, $row["MAX(Id)"]);
             }, $newTests);
-            
+
             return $queryResults;
         }
 
@@ -51,4 +51,5 @@
             return $removeResults;
         }
     }
+
 ?>

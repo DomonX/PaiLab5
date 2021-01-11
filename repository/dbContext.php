@@ -8,7 +8,7 @@
             $servername = $json["servername"];
             $username = $json["username"];
             $password = $json["password"];
-            
+
             return new mysqli($servername, $username, $password);
         }
 
@@ -19,7 +19,7 @@
             $servername = $json["servername"];
             $username = $json["username"];
             $password = $json["password"];
-            
+
             return new mysqli($servername, $username, $password, $dbName);
         }
 
@@ -29,7 +29,7 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            
+
             $sql = "CREATE DATABASE IF NOT EXISTS School";
 
             if ($conn->query($sql)) {
@@ -37,8 +37,10 @@
             } else {
                 echo "Error creating database: " . $conn->error;
             }
-            
+
             $conn->close();
         }
     }
+    $s = new DbContext();
+    var_dump($s -> createDbContext());
 ?>

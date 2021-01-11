@@ -16,14 +16,8 @@
             </select>
             <button type="submit" class="btn submit-btn">Filter</button>
         </form>
-
-        <?php
-            echo '<p class="subject-element">Subject 1</p>';
-            echo '<p class="subject-element">Subject 2</p>';
-            echo '<p class="subject-element">Subject 3</p>';
-        ?>
-
-        <form action="/PaiLab5/pdfSaver/pdfSaver.php" method="GET">
+<!-- subject-element -->
+        <form action="/PaiLab5/pdfSaver/pdfSaver.php" method="POST">
             <button type="submit" name="generatePdf" class="btn generate-btn">Generate PDF</button>
         </form>
 

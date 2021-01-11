@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/dbContext.php');
 
     if(!isset($_POST['mode'])) {

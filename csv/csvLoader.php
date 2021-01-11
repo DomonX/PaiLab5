@@ -8,7 +8,7 @@
         $dir = scandir("../data");
         $csvs = array_filter($dir, function ($i) { return strpos($i, ".csv") != false; });
         $examNames = array_map(function($i) { return str_replace(".csv", "", $i); }, $csvs);
-        $exams = array_map(function($i) { 
+        $exams = array_map(function($i) {
           $test = new Test();
           $test->name = $i;
           return $test;
@@ -18,7 +18,7 @@
           return $i;
         }, $exams);
         return $examsWithResults;
-    } 
+    }
 
     private function getResultsForExam($exam) {
       $results = [];
@@ -27,6 +27,7 @@
           array_push($results, $this->arrayToResult($data));
         }
       }
+      var_dump($results);
       return $results;
     }
 

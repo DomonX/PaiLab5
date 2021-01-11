@@ -4,6 +4,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+html {
+    height: 0;
+}
+
 .grade-container p {
     display: flex;
     justify-content: center;
@@ -77,6 +81,19 @@ textarea:focus {
     color: black;
 }
 
+.register-btn {
+    height: 2em;
+    width: 5em;
+    background: #44d6db;
+    transition: background 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.register-btn:hover {
+    background: #33a2a6;
+    color: white;
+}
+
 .form-container {
     display: flex;
     align-items: center;
@@ -108,4 +125,35 @@ textarea:focus {
 .subject-element:hover {
     background: lightgray;
     transition: background 0.1s ease-in-out;
+}
+
+.index-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-container {
+    width: 70vw;
+    height: 100px;
+    margin: auto;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.panel-btn {
+    background: #001f3f;
+}
+
+.panel-btn > a {
+    color: #7FDBFF;
 }

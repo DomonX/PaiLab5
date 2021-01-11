@@ -12,7 +12,7 @@ class PdfSaver {
   }
 }
 
-if($_GET and isset($_GET['generatePdf'])){
+if($_POST and isset($_POST['generatePdf'])){
   $p = new PdfSaver();
   $p->save("", "");
 }

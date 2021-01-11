@@ -23,4 +23,5 @@
             return $query->command($sql);
         }
     }
+
 ?>

@@ -1,7 +1,7 @@
-<?php 
+<?php
     include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/teacherDb/teacherCommand.php');
     include_once($_SERVER['DOCUMENT_ROOT'].'/PaiLab5/repository/teacherDb/teacherQuery.php');
-
+    var_dump($_POST['mode']);
     if(!isset($_POST['mode'])) {
         return;
     }
@@ -30,8 +30,8 @@
 
     function checkPassword() {
         $repository = new TeacherQuery();
-        $name = json_decode($_POST['name']);
-        $password = json_decode($_POST['password']);
+        $name = $_POST['name'];
+        $password = $_POST['password'];
 
         echo $repository->checkTeacherPassword($name, $password);
     }
