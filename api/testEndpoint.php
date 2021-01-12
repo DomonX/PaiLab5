@@ -10,7 +10,7 @@
     if($_POST['mode'] == 'create') {
         create();
     }
-
+    
     if($_POST['mode'] == 'loadNewResults') {
         loadNewResults();
     }

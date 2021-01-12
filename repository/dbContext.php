@@ -33,7 +33,7 @@
             $sql = "CREATE DATABASE IF NOT EXISTS School";
 
             if ($conn->query($sql)) {
-                echo "Database created successfully";
+                // echo "Database created successfully";
             } else {
                 echo "Error creating database: " . $conn->error;
             }
@@ -42,5 +42,5 @@
         }
     }
     $s = new DbContext();
-    var_dump($s -> createDbContext());
+    $s -> createDbContext();
 ?>

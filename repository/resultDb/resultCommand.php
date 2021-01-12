@@ -45,7 +45,6 @@
         }
 
         public function updateAllResults($newResults, $testId) {
-            var_dump();
             $removeResults = $this->removeAllResults();
 
             if($removeResults === "Ok") {
