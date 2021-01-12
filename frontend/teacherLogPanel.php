@@ -32,7 +32,9 @@
         const sendRequest = (data, location) => {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", location, true);
-            xmlhttp.onreadystatechange( processData );
+            xmlhttp.onreadystatechange = () => {
+                console.log(this.responeText);
+            };
             xmlhttp.send(data);
         };
 
@@ -63,7 +65,7 @@
                     <label for="name">Password</label>
                     <input type="password" id="password" placeholder="Password">
                     
-                    <button type="submit" id="log-btn" class="btn submit-btn" name="checkPassword" onclick="check()">Log in</button>
+                    <button type="button" id="log-btn" class="btn submit-btn" name="checkPassword" onclick="check()">Log in</button>
                 </form>
                 <button class="btn submit-btn"><a href="/PaiLab5">HOME</a></button>
             </div>`
