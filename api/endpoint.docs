@@ -1,0 +1,40 @@
+GLOBAL RULES:
+  mode - describes what endpoint should do, should always be present and is hidden in "mode" field of post data
+
+(Endpoint Name)
+  [Mode] - Description
+    {Param} - Description
+    <Returns> - Description
+
+(dbContextEndpoint)
+  [create]
+
+(pdfEndpoint)
+  [create]
+    {testId}
+
+(resultEndpoint)
+  [create]
+  [changeStatus]
+    {resultId}
+    {newStatus}
+  [sendComment]
+    {resultId}
+    {comment}
+  [checkStudentPassword]
+    {albumNumber}
+    {password}
+  [getTestResults]
+    {testId}
+
+(teacherEndpoint)
+  [create]
+  [seed]
+  [checkPassword]
+    {testId}
+    {testId}
+
+(testEndpoint)
+  [create]
+  [loadNewResults]
+  [getAllTests]
