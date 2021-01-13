@@ -9,8 +9,17 @@
         createDb();
     }
 
+    if($_POST['mode'] == 'drop') {
+        dropDb();
+    }
+
     function createDb() {
         $dbContext = new DbContext();
         echo $dbContext->createDbContext();
+    }
+
+    function dropDb() {
+        $dbContext = new DbContext();
+        echo $dbContext->dropDbContext();
     }
 ?>

@@ -18,6 +18,10 @@
         sendComment();
     }
 
+    if($_POST['mode'] == 'sendAnswer') {
+        sendAnswer();
+    }
+
     if($_POST['mode'] == 'checkStudentPassword') {
         checkStudentPassword();
     }
@@ -33,22 +37,29 @@
 
     function changeStatus() {
         $repository = new ResultCommand();
-        $resultId = json_decode($_POST['resultId']);
-        $newStatus = json_decode($_POST['newStatus']);
+        $resultId = $_POST['resultId'];
+        $newStatus = $_POST['newStatus'];
         echo $repository->changeStatus($resultId, $newStatus);
     }
 
     function sendComment() {
         $repository = new ResultCommand();
-        $resultId = json_decode($_POST['resultId']);
-        $comment = json_decode($_POST['comment']);
-        echo $repository->changeStatus($resultId, $comment);
+        $resultId = $_POST['resultId'];
+        $comment = $_POST['comment'];
+        echo $repository->sendComment($resultId, $comment);
+    }
+
+    function sendAnswer() {
+        $repository = new ResultCommand();
+        $resultId = $_POST['resultId'];
+        $comment = $_POST['comment'];
+        echo $repository->sendAnswer($resultId, $comment);
     }
 
     function checkStudentPassword() {
         $repository = new ResultQuery();
-        $resultId = json_decode($_POST['albumNumber']);
-        $newStatus = json_decode($_POST['password']);
+        $resultId = $_POST['albumNumber'];
+        $newStatus = $_POST['password'];
         echo $repository->checkStudentPassword($resultId, $newStatus);
     }
 

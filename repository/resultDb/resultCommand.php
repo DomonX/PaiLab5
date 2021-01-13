@@ -22,13 +22,6 @@
             return $query->command($sql);
         }
 
-        private function removeAllResults() {
-            $query = new SqlQuery();
-            $sql = "DELETE FROM Result";
-
-            return $query->command($sql);
-        }
-
         private function addNewResults($newResults, $testId) {
             $queryResults = array();
 
@@ -37,24 +30,19 @@
                 $sql = "INSERT INTO Result
                         VALUES (DEFAULT, '$result->groupNumber', '$result->albumNumber', '$result->grade', '$result->comment',
                                 '$result->teacherComment', '$result->password', '$result->status', '$testId')";
-
-                array_push($queryResults, $query->command($sql));
+                $commandResult = $query->command($sql);
+                var_dump($commandResult);
+                array_push($queryResults, $commandResult);
             }
 
             return $queryResults;
         }
 
         public function updateAllResults($newResults, $testId) {
-            $removeResults = $this->removeAllResults();
+            $addResults = $this->addNewResults($newResults, $testId);
+            $invalidRows = array_filter($addResults, function ($i) { return $i !== "Ok"; });
 
-            if($removeResults === "Ok") {
-                $addResults = $this->addNewResults($newResults, $testId);
-                $invalidRows = array_filter($addResults, function ($i) { return $i !== "Ok"; });
-
-                return count($invalidRows) > 0 ? "One or more results are invalid" : "Ok";
-            }
-
-            return $removeResults;
+            return count($invalidRows) > 0 ? "One or more results are invalid" : "Ok";
         }
 
         public function changeStatus($resultId, $newStatus) {
@@ -68,9 +56,16 @@
             $query = new SqlQuery();
             $sql = "UPDATE Result SET Comment = '$comment' WHERE Id = '$resultId'";
             $commentResult = $query->command($sql);
-            $status = new Status();
 
-            return $commentResult === "Ok" ? $this->changeStatus($resultId, $status::WITHCOMMENT) : $commentResult;
+            return $commentResult;
+        }
+
+        public function sendAnswer($resultId, $comment) {
+            $query = new SqlQuery();
+            $sql = "UPDATE Result SET TeacherComment = '$comment' WHERE Id = '$resultId'";
+            $commentResult = $query->command($sql);
+            
+            return $commentResult;
         }
     }
 

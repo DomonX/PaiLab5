@@ -8,13 +8,9 @@ html {
     height: 0;
 }
 
-.grade-container p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .grade {
+    text-align: center;
     font-weight: 700;
 }
 
@@ -33,7 +29,6 @@ textarea {
     resize: none;
     outline: none;
     overflow: auto;
-    position: relative;
 }
 
 textarea:focus {
@@ -55,9 +50,7 @@ textarea:focus {
     background: #44d6db;
     transition: background 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
-    position: absolute;
-    right: 35vw;
-    bottom: 60vh;
+    
 }
 
 .question-submit-btn:hover {
@@ -79,6 +72,15 @@ textarea:focus {
 .generate-btn:hover {
     background: #eb4034;
     color: black;
+}
+
+.respond-btn {
+    background: #33a2a6;
+    transition: color 0.3s ease-in-out;
+}
+
+.respond-btn:hover {
+    color: white;
 }
 
 .register-btn {
@@ -121,11 +123,16 @@ textarea:focus {
 
 .subject-element {
     width: 100vw;
-    height: 6vh;
+    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.subject-element > div  {
+    width: 60vw;
+    word-wrap: break-word;
 }
 
 .subject-element:hover {
@@ -158,8 +165,33 @@ a {
 
 .panel-btn {
     background: #001f3f;
+    color: #7FDBFF;
+    transition: 0.3s ease-in-out;
 }
 
-.panel-btn > a {
-    color: #7FDBFF;
+.panel-btn:hover  {
+    background: #7FDBFF;
+    color: #001f3f;
+}
+
+.create-btn:disabled {
+    transition: none;
+    background: grey;
+    color: white;
+    cursor: auto;
+}
+
+.load-btn:disabled {
+    transition: none;
+    background: grey;
+    color: white;
+    cursor: auto;
+}
+
+
+.panel-btn:disabled {
+    transition: none;
+    background: grey;
+    color: white;
+    cursor: auto;
 }

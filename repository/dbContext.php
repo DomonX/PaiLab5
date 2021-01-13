@@ -40,7 +40,24 @@
 
             $conn->close();
         }
+
+        public function dropDbContext() {
+            $conn = $this->getConnectionDetails();
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "DROP DATABASE IF EXISTS School";
+
+            if ($conn->query($sql)) {
+            } else {
+                echo "Error deleting database: " . $conn->error;
+            }
+
+            $conn->close();
+        }
     }
-    $s = new DbContext();
-    $s -> createDbContext();
+    // $s = new DbContext();
+    // $s -> createDbContext();
 ?>

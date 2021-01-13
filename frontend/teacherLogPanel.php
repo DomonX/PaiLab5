@@ -8,32 +8,19 @@
 </head>
 <body>
     <div id="loginForm"></div>
-    <div id="alert"></div>
-    <div id="teacherData"></div>
+
     <script>
-
-        function buildData(data) {
-            let stringifiedHtml = ``;
-            let dataObject = JSON.parse(data);
-            stringifiedHtml.concat(`<table>`);
-            stringifiedHtml.concat(`</table>`);
-        }
-
-        function processData(data) {
-            if(data.status = "permission") {
-                document.getElementById('loginForm').innerHTML = ``;
-                document.getElementById('teacherData').innerHTML = buildData(data.data);
-            }
-            if(data.status = "nopermission") {
-                document.getElementById('alert').innerHTML = `Nie masz uprawnien`;
-            }
-        }
-
         const sendRequest = (data, location) => {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", location, true);
             xmlhttp.onreadystatechange = () => {
-                console.log(this.responeText);
+                if(xmlhttp.readyState == 4){
+                    if(xmlhttp.response == 1){
+                        window.location.href = "/PaiLab5/frontend/teacherPanel.php";
+                    } else {
+                        alert("Błędne dane logowania!");
+                    }
+                }
             };
             xmlhttp.send(data);
         };
@@ -44,9 +31,8 @@
                 name: document.getElementById('name').value,
                 password: document.getElementById('password').value
             };
-            console.log(teacherData);
-            data.append('name', JSON.stringify(teacherData.name));
-            data.append('password', JSON.stringify(teacherData.password));
+            data.append('name', teacherData.name);
+            data.append('password', teacherData.password);
             data.append('mode', 'checkPassword');
             sendRequest(data, "/PaiLab5/api/teacherEndpoint.php");
         };
@@ -67,7 +53,6 @@
                     
                     <button type="button" id="log-btn" class="btn submit-btn" name="checkPassword" onclick="check()">Log in</button>
                 </form>
-                <button class="btn submit-btn"><a href="/PaiLab5">HOME</a></button>
             </div>`
         }
 

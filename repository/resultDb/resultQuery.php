@@ -7,13 +7,9 @@
 
         public function checkStudentPassword($albumNumber, $password) {
             $query = new SqlQuery();
-
-            $sql = "SELECT * FROM Result WHERE AlbumNumber = '".$albumNumber."'";
-
+            $sql = "SELECT * FROM result WHERE `AlbumNumber` = '".$albumNumber."' AND `Password` = '" . $password . "'";
             $result = $query->query($sql);
-            $row = $result->fetch_assoc();
-
-            return $row["Password"] === $password;
+            return $result->num_rows > 0;
         }
 
         public function getTestResults($testId) {

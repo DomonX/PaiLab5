@@ -21,6 +21,13 @@
             return $query->command($sql);
         }
 
+        private function removeAllResults() {
+            $query = new SqlQuery();
+            $sql = "DELETE FROM Result";
+
+            return $query->command($sql);
+        }
+
         private function addNewTests($newTests) {
             $queryResults = array_map(function($i) {
                 $query = new SqlQuery();
@@ -39,9 +46,10 @@
         }
 
         public function updateAllTests($newTests) {
-            $removeResults = $this->removeAllTests();
+            $removeResults = $this->removeAllResults();
+            $removeTests = $this->removeAllTests();
 
-            if($removeResults === "Ok") {
+            if($removeResults === "Ok" && $removeTests === "Ok") {
                 $addResults = $this->addNewTests($newTests);
                 $invalidRows = array_filter($addResults, function ($i) { return $i !== "Ok"; });
 

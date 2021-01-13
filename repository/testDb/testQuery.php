@@ -10,19 +10,17 @@
             $sql = "SELECT * FROM Test";
 
             $result = $query->query($sql);
-            $results = [];
-            
+            $tests = [];
+
             while($row = $result->fetch_assoc()) {
                 $test = new Test();
                 $test->id = $row["Id"];
                 $test->name = $row["Name"];
 
-                array_push($results, $result);
+                array_push($tests, $test);
             }
 
-            $test->results = $results;
-
-            return $test;
+            return $tests;
         }
     }
 ?>
